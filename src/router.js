@@ -1,31 +1,31 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/Views/Home'
-import About from '@/Views/About'
-import Error from '@/Views/Error'
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "@/Views/Home";
+import About from "@/Views/About";
+import Error from "@/Views/Error";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-    mode: 'history',
+  mode: "history",
 
-    routes: [
-        {
-            path:'/',
-            name: 'home',
-            component: Home
-        },
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      component: Home
+    },
 
-        {
-            path: '/about',
-            name: 'about',
-            component: About
-        },
+    {
+      path: "/about",
+      name: "about",
+      component: About
+    },
 
-        {
-            path: '*',
-            name: 'Error',
-            component: Error
-        }
-    ]
-})
+    {
+      path: "*",
+      name: "Error",
+      component: Error
+    }
+  ]
+});
