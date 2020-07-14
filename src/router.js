@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-
 import Home from "@/Views/Home";
 import About from "@/Views/About";
 import Error from "@/Views/Error";
@@ -26,8 +25,8 @@ export default new Router({
     },
 
     {
-      path:'/coin/:id',
-      name:'coin-detail',
+      path: "/coin/:id",
+      name: "coin-detail",
       component: CoinDetail
     },
 
