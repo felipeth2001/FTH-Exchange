@@ -60,7 +60,7 @@
             <label class="w-full" for="convertValue">
               <input
                 v-model="convertValue"
-                :placeholder="`Valor en ${ fromUsd ? 'USD' : asset.symbol }`"
+                :placeholder="`Valor en ${fromUsd ? 'USD' : asset.symbol}`"
                 id="convertValue"
                 type="number"
                 class="text-center bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
@@ -68,7 +68,9 @@
             </label>
           </div>
 
-          <span class="text-xl"> {{ convertResult }} {{ fromUsd ? asset.symbol : 'USD' }}</span>
+          <span class="text-xl">
+            {{ convertResult }} {{ fromUsd ? asset.symbol : "USD" }}</span
+          >
         </div>
       </div>
 
@@ -95,7 +97,11 @@
           </td>
           <td>{{ m.baseSymbol }} / {{ m.quoteSymbol }}</td>
           <td>
-            <px-button :is-loading="m.isLoading || false" v-if="!m.url" @custom-click="getwebside(m)">
+            <px-button
+              :is-loading="m.isLoading || false"
+              v-if="!m.url"
+              @custom-click="getwebside(m)"
+            >
               <slot>Obtener Link</slot>
             </px-button>
             <a v-else class="hover:undeline text-blue-600" target="_blanck">
@@ -123,22 +129,22 @@ export default {
       asset: {},
       history: [],
       markets: [],
-      fromUsd:true,
+      fromUsd: true,
       convertValue: null
     };
   },
 
   computed: {
-
-    convertResult (){
-      if (!this.convertValue){
-        return 0
+    convertResult() {
+      if (!this.convertValue) {
+        return 0;
       }
 
-      const result = this.fromUsd ? this.convertValue / this.asset.priceUsd :
-      this.convertValue * this.asset.priceUsd
+      const result = this.fromUsd
+        ? this.convertValue / this.asset.priceUsd
+        : this.convertValue * this.asset.priceUsd;
 
-      return result.toFixed(4)
+      return result.toFixed(4);
     },
 
     min() {
@@ -160,9 +166,9 @@ export default {
     }
   },
 
-  watch:{
-    $route (){
-      this.getCoin()
+  watch: {
+    $route() {
+      this.getCoin();
     }
   },
 
@@ -171,19 +177,20 @@ export default {
   },
 
   methods: {
-
-    toggleConverter (){
-      this.fromUsd = !this.fromUsd
+    toggleConverter() {
+      this.fromUsd = !this.fromUsd;
     },
 
     getwebside(exchange) {
-      this.$set(exchange, 'isLoading', true)
-      return api.getExchange(exchange.exchangeId).then(res => {
-        this.$set(exchange, 'url', res.exchangeUrl)
-      })
-      .finally(() => {
-        this.$set(exchange, 'isLoading', false)
-      })
+      this.$set(exchange, "isLoading", true);
+      return api
+        .getExchange(exchange.exchangeId)
+        .then(res => {
+          this.$set(exchange, "url", res.exchangeUrl);
+        })
+        .finally(() => {
+          this.$set(exchange, "isLoading", false);
+        });
     },
 
     getCoin() {
@@ -206,8 +213,8 @@ export default {
 </script>
 
 <style scoped>
-  td{
-     padding: 10px;
-     text-align: center;
-  }
+td {
+  padding: 10px;
+  text-align: center;
+}
 </style>
